@@ -1,0 +1,164 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    .alert{
+        margin-top: 10px;
+        padding-left: 40px;
+        width: 900px;
+        background: red;
+        border-radius: 20px;
+    }
+
+    .head{
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .new-container{
+        margin-top: 100px;
+        margin-left: 25%;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .new-form{
+        background-color: #8A2BE2;
+        padding-left: 40px;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+        width: 1000px;
+        border: 5px solid #9ACD32;
+        border-radius: 20px;
+    }
+
+    .title{
+        margin-top:0px;
+        width: 920px;
+        height: 40px;
+        font-size: 100%;
+        border-radius: 25px;
+    }
+
+    .description{
+        padding: 20px;
+        width: 920px;
+        height: 200px;
+        border-radius: 25px;
+        resize: none;
+    }
+
+    #goal_priority{
+        font-size: 100%;
+        width: 100%;
+        width: 300px;
+        height: 40px;
+    }
+
+    #goal_priority::option{
+        color: aqua;
+    }
+
+    .field{
+        font-size: 100%;
+        width: 100%;
+        width: 300px;
+        height: 40px;
+    }
+
+    .submit {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 300px;
+    }
+
+    .submit:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .submit:main, .submit:focus {
+        user-select: auto;
+    }
+
+    .submit:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .submit:disabled {
+        cursor: auto;
+    }
+</style>
+
+
+<div class="new-container">
+    <h2 class="head">Edit a Goal</h2>
+    <%= form_for :goal, class: "new-form", url: main_path(@goal), method: :patch do |form| %>
+        <% if @goal.errors.any? %>
+            <% @goal.errors.full_messages.each do |msg| %>
+                <div class="alert"><%= msg %></div>
+            <% end %>
+        <% end %>
+        
+        <div>
+            <p>Goal Title</p>
+            <%= form.text_field :title, class: 'title' %>
+        </div>
+
+        <p>
+            <p>Description</p>
+            <%= form.text_area :description, class: 'description' %>
+        </p>
+
+        <p>
+            <p> Priority </p>  
+            <%= form.select :priority, [['High','High'],['Medium','Medium'],['Small','Small']]%>
+            
+        </p>
+
+        <p>
+            <p> Due Date </p>
+            <%= form.date_field :date, value: "#{Date.today}", class: 'field'%>
+        </p>
+
+        <p>
+            <%= form.submit class: 'submit' %>
+        </p>
+    <% end %>
+</div>
+

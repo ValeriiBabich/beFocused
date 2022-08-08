@@ -1,0 +1,249 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    .main-content{
+        
+    }
+
+    .my-goals{
+        margin-top: 60px;
+        font-family: 'Poppins', sans-serif;
+        margin-left: 25%;
+        font-size: 30px;
+    }
+    
+    .goal-container{
+        background: rgba(0, 0, 255, .2);
+        font-size: 25px;
+        margin-left: 25%;
+        width: 1000px;
+        border: 5px solid #9ACD32;
+        border-radius: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .goals-header{
+        border-bottom: 3px solid gray;
+        margin-top: 10px;
+        width: 1000px;
+    }
+
+    .goal-block{
+        height: 42px;
+        margin-left: 40px;
+        border-bottom: 3px solid gray;
+        margin-top: 10px;
+        width: 920px;
+    }
+
+    .goal-name{
+        margin-left: 40px;
+    }
+
+    .due-date{
+        margin-left: 385px;
+    }
+
+    .priority-index{
+        margin-left: 100px;
+    }
+
+    .goal-name-value{
+        display: inline-block;
+        width: 510px;
+    }
+
+    .due-date-value{
+        text-align: center;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .priority-index-value{
+        text-align: center;
+        width: 200px;
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    .create {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 250px;
+    }
+
+    .create:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .create:main, .create:focus {
+        user-select: auto;
+    }
+
+    .create:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .create:disabled {
+        cursor: auto;
+    }
+
+    .about-container{
+        display: inline-block;
+        font-family: 'Poppins', sans-serif;
+        margin-left: 25%;
+    }
+
+        
+    .head1{
+        font-size: 30px;
+    }
+
+    .head2{
+        width: 500px;
+        font-size: 20px;
+    }
+
+    .paragrafs{
+        width: 500px;
+    }
+
+    .section {
+        padding-top: 50px;    
+    }
+
+    .aside{
+        display: inline-block;
+    }
+
+    .img{
+        height: 500px;
+    }
+</style>
+
+
+<h1 class="my-goals">My Goals(<%= @count %>) <button class="create" onclick="window.location.href = 'main/new';">Create a Goal</button></h1>
+
+<% if @count == 0 %>
+    <div class="about-container">
+        <h1 class="head1">Self-development goals tracker</h1>
+        <p class="head2">
+            BeFocused is a convenient personal space for any students,
+            learners or other interested in self-education and self-development people.
+        </p>
+        <p class="paragrafs">
+            Moreover, settings goals in the right way can help you achieve them! Each goal should be SMART, and here's what it means:
+        </p>
+        <p class="paragrafs">
+            Well defined, clear, and unambigous
+        </p>
+        <p class="paragrafs">
+            Measurable: With specific criteria that measure your progress towards the accomplishment of the goal
+        </p class="paragrafs">
+        <p>
+            Realistic: Within reach, realistic, and relevant to your life purpose
+        </p>
+
+        <p class="paragrafs">
+            Timely: With a cleary defined timeline, including a strating date and a target done. The purpose is to create urgency.
+        </p>
+    </div>
+    <aside class="aside">
+        <img src="goal_picture.png" class="img">
+    </aside>
+<% else %>   
+    <div class="goal-container">
+    
+        <div class="">
+            <nav class="goals-header">
+                <span title="Click for sort by alphabet" class="goal-name" id="goalName">Goal Name</span>
+                <span title="Click for sort by date" class="due-date">Due Date</span>
+                <span title="Click for sort by priority" class="priority-index">Priority</span>
+            </nav>
+        </div>
+
+
+        <% @goals.each do |goal| %>
+            <div class="goal-block" id="goal-block" onclick="window.location.href = 'main/<%= goal.id %>';">
+                <nav class="goal">
+                    <div class="goal-name-value" id="goal-name-value">
+                        <% if(goal.complete)%>
+                            <span class="mark">✅</span> <%= goal.title %>
+                        <% else %>
+                            <span class="mark">❌</span> <%= goal.title %>
+                        <% end %>
+                        </div>
+                    <div class="due-date-value"><%= goal.date %></div>
+                    <div class="priority-index-value"><%= goal.priority %></div>
+                </nav>
+            </div>
+        <% end %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        goalName = $(".goal-name");
+        goalName.click(function() {
+            divArr = $(".goal-block");
+            divArr.sort(function(a, b) {
+                return $(a).find("div.goal-name-value").text() > $(b).find("div.goal-name-value").text() ? 1: -1;
+            });
+            $(".goal-container").append(divArr);
+        });
+
+        dueDate = $(".due-date");
+        dueDate.click(function() {
+            divArr = $(".goal-block");
+            divArr.sort(function(a, b) {
+                    return $(a).find("div.due-date-value").text() > $(b).find("div.due-date-value").text() ? 1: -1;
+            });
+            $(".goal-container").append(divArr);
+        });
+
+        priorityIndex = $(".priority-index");
+        priorityIndex.click(function() {
+            divArr = $(".goal-block");
+            divArr.sort(function(a, b) {
+                    return $(a).find("div.priority-index-value").text() > $(b).find("div.priority-index-value").text()? 1: -1;
+            });
+            $(".goal-container").append(divArr);
+        });
+
+
+    </script>
+<% end %>
