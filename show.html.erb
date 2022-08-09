@@ -1,0 +1,336 @@
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    .alert{
+        margin-top: 10px;
+        padding-left: 40px;
+        width: 900px;
+        background: red;
+        border-radius: 20px;
+    }
+
+    .return{
+        padding-bottom: 10px;
+        background-color: #1CB0F6;
+        text-align: center;
+        border: 3px solid black;
+        border-radius: 5px;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .new-container{
+        margin-top: 10px;
+        pointer-events:none;
+        margin-left: 25%;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .new-form{
+
+        background-color: #8A2BE2;
+        padding-left: 40px;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+        width: 1000px;
+        border: 5px solid #9ACD32;
+        border-radius: 20px;
+    }
+
+    .title{
+        margin-top:0px;
+        width: 920px;
+        height: 40px;
+        font-size: 100%;
+        border-radius: 25px;
+    }
+
+    .description{
+        padding: 20px;
+        width: 920px;
+        height: 200px;
+        border-radius: 25px;
+    }
+
+    #goal_priority{
+        font-size: 100%;
+        width: 100%;
+        width: 300px;
+        height: 40px;
+    }
+
+    #goal_priority::option{
+        color: aqua;
+    }
+
+    .field{
+        font-size: 100%;
+        width: 100%;
+        width: 300px;
+        height: 40px;
+    }
+
+    .buttons-container{
+        display: inline-block;
+        margin-left: 25%;
+        margin-top: 100px;
+    }
+
+    .edit {
+        margin-left: 160px;
+        width: 100px;
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    .edit:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .edit:main, .edit:focus {
+        user-select: auto;
+    }
+
+    .edit:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .edit:disabled {
+        cursor: auto;
+    }
+
+    .delete {
+        margin-top: -70px;
+        margin-left: 530px;
+        display: inline-block;
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100px;
+    }
+
+    .delete:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .delete:main, .delete:focus {
+        user-select: auto;
+    }
+
+    .delete:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .delete:disabled {
+        cursor: auto;
+    }
+
+    .complete {
+        margin-left: 10px;
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 250px;
+    }
+
+    .complete:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .complete:main, .delete:focus {
+        user-select: auto;
+    }
+
+    .complete:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+    }
+
+    .complete:disabled {
+        cursor: auto;
+    }
+
+    .button_to{
+        width: 100px;
+    }
+</style>
+
+
+ <nav class="buttons-container">
+    <span class="return" onclick="window.location.href = '/main';"> < My Goals </span>
+    <span style="display: inline-block"><%= button_to "complete", {:controller => :main, :action => 'update_status', :id => @goal.id}, :method => :patch, class: "complete", id: "complete" %> </span>
+    <button class="edit" onclick="window.location.href = '<%= edit_main_path(@goal) %>';">Edit</button>
+    <%= button_to "delete", {:controller => :main, :action => 'destroy', :id => @goal.id}, :method => :delete, class: "delete", id: "delete" %>
+</nav>
+<div class="new-container" id="new-container">
+   
+    <%= form_for :goal, class: "new-form", url: main_path(@goal), method: :patch do |form| %>
+        <% if @goal.errors.any? %>
+            <% @goal.errors.full_messages.each do |msg| %>
+                <div class="alert"><%= msg %></div>
+            <% end %>
+        <% end %>
+        
+        <div>
+            <p>Goal Title</p>
+            <%= form.text_field :title, class: 'title' %>
+        </div>
+
+        <p>
+            <p>Description</p>
+            <%= form.text_area :description, class: 'description' %>
+        </p>
+
+        <p>
+            <p> Priority </p>  
+            <%= form.select :priority, [[@goal.priority,'high']]%>
+            
+        </p>
+
+        <p>
+            <p> Due Date </p>
+            <%= form.date_field :date, value: "#{@goal.date}", class: 'field'%>
+        </p>
+        
+    <% end %>
+</div>
+
+<script>
+    let completeBtn = document.getElementById("complete");
+    let deleteBtn = document.getElementById("delete");
+
+    if(<%= @goal.complete %>){
+        completeBtn.innerHTML ="Complete✅"
+    }
+    else{
+        completeBtn.innerHTML ="Uncomplete❌"
+    } 
+    
+    completeBtn.onclick = () => {
+        
+        if(<%= @goal.complete %>){
+            completeBtn.innerHTML ="Uncomplete❌";
+        }else{
+            completeBtn.innerHTML ="Complete✅";
+        }
+        
+    }
+    
+
+    deleteBtn.onclick = () => {
+        let question = confirm("Delete goal?")
+        console.log(question)
+    }
+
+    let div = document.getElementById("new-container");
+    div.addEventListener('click', function(){
+        return false
+    });
+</script>
